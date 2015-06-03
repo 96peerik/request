@@ -404,7 +404,7 @@ Request.prototype.init = function (options) {
   if (typeof self.uri === 'string') {
     self.uri = url.parse(self.uri)
     if (options.unescapeUrl) {
-      self.uri.path = querystring.unescape(self.uri.path).replace(/\s/g, "%20");
+      self.uri.path = self._qs.unescape(self.uri.path).replace(/\s/g, "%20");
     }
   }
 
