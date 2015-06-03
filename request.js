@@ -403,6 +403,9 @@ Request.prototype.init = function (options) {
   // If a string URI/URL was given, parse it into a URL object
   if (typeof self.uri === 'string') {
     self.uri = url.parse(self.uri)
+    if (options.unescapeUrl) {
+      self.uri.path = querystring.unescape(self.uri.path).replace(/\s/g, "%20");
+    }
   }
 
   // DEPRECATED: Warning for users of the old Unix Sockets URL Scheme
